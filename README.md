@@ -22,6 +22,9 @@ It is a simple blog where anyone can register an account and post. It is all pow
 * Create a Stitch application and connect it to that cluster and the DB
 * Get your AWS IAM API Key and update the `StitchApp` `AWS config.js` with your key
 * Create an S3 bucket within the AWS console
+* Generate a API key for Azure 
+* Enable Azure Cognitive Vision API 
+* Put key in the `values/cvaAccessKey.json`
 * Using `stitch-cli` push the Stitch app
 * Enable hosting on your Stitch App 
 * Edit `Hosting/includes/conf.js` and update top few lines with stitch app name, bucket, etc
