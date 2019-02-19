@@ -20,14 +20,15 @@
         </style>
     </head>
     <body>
-        <div class="container" id="ctr_body">
+        <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav"><a class="navbar-brand" href="#"><img src="https://secure.meetupstatic.com/photos/event/d/e/7/4/600_458156948.jpeg" width="30" height="30" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup"><div class="navbar-nav" id="navlist"></div></div>
             </nav>
 
             <h1 id="heading">Philly MUG Blog</h1>
-
+            
+            <div class="card-columns" id="ctr_body"></div>
             
         </div>
 
@@ -52,26 +53,28 @@
                 docs.map(post => {
                     var d = new Date(post.Submitted_On);
                     var html = "";
-                    html += '<div class="jumbotron" style="background-image: url('+post.HeroPath+');">';
-                    html += '<h1 class="display-4">'+post.Title+"</h1>";
-                    html += '</div>';
-                    html += "<p style='font-size:10px;'>Posted by "+post.Author+" on " + d.yyyymmdd() + "</p>";
+                    html += '<div class="card" style="width: 18rem;">';
+                    html += '<img src="'+post.HeroPath+'" class="card-img-top">';
+                    html += '<h5 class="card-title">'+post.Title+'</h5><br>';
+                    html += '<h6 class="card-subtitle mb-2 text-muted">Posted by '+post.Author+' on ' +d.yyyymmdd()+'</h6>';
                     
                     if(post.hasOwnProperty("rek")) {
-                    html += '<p style="font-size:10px;"><i class="fa fa-tag fa-fw" aria-hidden="true"></i> AWS says this may be: ';
+                    html += '<h6 class="card-subtitle mb-2 text-muted" style="font-size:10px;"><i class="fa fa-tag fa-fw" aria-hidden="true"></i> AWS says this may be: ';
                     $.each(post.rek.Labels, function(i, t) {
                         html = html +t.Name+' ('+Math.floor(t.Confidence)+'%), ';
                     });
-                    html += '</p>';
+                    html += '</h6>';
 
                     if(post.hasOwnProperty('cva')) {
                         if(post.cva.description.captions.length>0) { 
-                            html += '<p style="font-size:10px;"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Azure is '+Math.floor(post.cva.description.captions[0].confidence*1000)/10+'% sure this is: '+post.cva.description.captions[0].text + '</p>';
+                            html += '<h6 class="card-subtitle mb-2 text-muted" style="font-size:10px;"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Azure is '+Math.floor(post.cva.description.captions[0].confidence*1000)/10+'% sure this is: '+post.cva.description.captions[0].text + '</h6>';
                         }
                     }
                 }
                     
-                    html += "<pre>"+post.Post+"</h1>";
+                    html += '<div class="card-body">';
+                    html += '<p class="card-text"><pre style="font-family:Helvetica Neue">'+post.Post+'</pre></p>';
+                    html += '</div></div>';
                     $("#ctr_body").append(html);
                 });
             }
