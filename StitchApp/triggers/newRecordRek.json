@@ -1,0 +1,18 @@
+{
+    "id": "5c6c1f84c8815bdbf6569290",
+    "name": "newRecordRek",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT"
+        ],
+        "database": "blog",
+        "collection": "blog",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "full_document": true,
+        "unordered": false
+    },
+    "function_name": "rek",
+    "disabled": false
+}

@@ -56,6 +56,15 @@
                     html += '<h1 class="display-4">'+post.Title+"</h1>";
                     html += '</div>';
                     html += "<p style='font-size:10px;'>Posted by "+post.Author+" on " + d.yyyymmdd() + "</p>";
+                    
+                    if(post.hasOwnProperty("rek")) {
+                    html += '<p style="font-size:10px;"><i class="fa fa-tag fa-fw" aria-hidden="true"></i> AWS says this may be: ';
+                    $.each(post.rek.Labels, function(i, t) {
+                        html = html +t.Name+' ('+Math.floor(t.Confidence)+'%), ';
+                    });
+                    html += '</p>';
+                }
+                    
                     html += "<pre>"+post.Post+"</h1>";
                     $("#ctr_body").append(html);
                 });
