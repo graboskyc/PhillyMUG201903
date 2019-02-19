@@ -77,7 +77,9 @@
 
             $(function() {
                 if(client.auth.hasOwnProperty('currentUser')){
-                    createForm(client.auth.currentUser);
+                    if(client.auth.authInfo.userProfile.data.hasOwnProperty('email')) {
+                        createForm(client.auth.currentUser);
+                    }
                 }
             });
 

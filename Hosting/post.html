@@ -36,8 +36,8 @@
                 <input type="text" name="txt_path" id="txt_path" class="form-control" />
                 <label for="txt_title">Post Title:</label>
                 <input type="text" name="txt_title" id="txt_title" class="form-control" />
-                <label for="txt_post">Post:</label>
-                <textarea name="txt_post" id="txt_post"></textarea>
+                <label for="txt_post">Post:</label> <br />
+                <textarea name="txt_post" id="txt_post" style="width:100%;height:300px;"></textarea>
                 <br />
                 <button onclick="insertRecord();return false;" class="btn btn-lg btn-success">Post</button>
                 <br /><br />
@@ -166,6 +166,8 @@
 
             $(function() {
                 if(!client.auth.hasOwnProperty('currentUser')){
+                    requireLogin();
+                } else if (!client.auth.authInfo.userProfile.data.hasOwnProperty('email')) {
                     requireLogin();
                 }
             });
