@@ -63,6 +63,12 @@
                         html = html +t.Name+' ('+Math.floor(t.Confidence)+'%), ';
                     });
                     html += '</p>';
+
+                    if(post.hasOwnProperty('cva')) {
+                        if(post.cva.description.captions.length>0) { 
+                            html += '<p style="font-size:10px;"><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Azure is '+Math.floor(post.cva.description.captions[0].confidence*1000)/10+'% sure this is: '+post.cva.description.captions[0].text + '</p>';
+                        }
+                    }
                 }
                     
                     html += "<pre>"+post.Post+"</h1>";

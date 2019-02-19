@@ -1,0 +1,18 @@
+{
+    "id": "5c6c2eee5ca157fc490d628a",
+    "name": "newRecordCVA",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT"
+        ],
+        "database": "blog",
+        "collection": "blog",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "full_document": true,
+        "unordered": true
+    },
+    "function_name": "cva",
+    "disabled": false
+}

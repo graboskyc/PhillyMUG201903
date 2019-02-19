@@ -10,6 +10,7 @@ It is a simple blog where anyone can register an account and post. It is all pow
 * [Mongo Stitch](https://docs.mongodb.com/stitch/) - Serverless platform for MongoDB Atlas
 * [AWS S3](https://aws.amazon.com/s3/) - Storage
 * [AWS Rekognition](https://aws.amazon.com/rekognition/) - Object and Scene Analysis
+* [Azure Cognitive Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) - Object and Scene Analysis
 * [BootStrap 4](https://getbootstrap.com/) - Layout
 * [Font Awesome](https://fontawesome.com/v4.7.0/icons/) - Icons
 * [jQuery](https://jquery.com/) - DOM maniuplation 
@@ -40,6 +41,7 @@ It is a simple blog where anyone can register an account and post. It is all pow
 * App will push this image to S3 and update the path
 * User enters a title and post and submits
 * Trigger runs in background to run Rekognition and adds field on what Rekognition thinks the image is
+* Trigger runs in background to run Cognitive Vision API (cva) of what Azure thinks the image is
 * All viewable in `index.html` 
 
 ## Screenshots
