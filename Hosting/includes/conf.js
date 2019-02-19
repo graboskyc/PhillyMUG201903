@@ -21,6 +21,7 @@ function drawNav() {
         var html = "<ul class='navbar-nav'>";
         html += '<li class="nav-item"><a class="nav-item nav-link" href="/index.html">Blog</a></li>';
         html += '<li class="nav-item"><a class="nav-item nav-link" href="/post.html">Post</a></li>';
+        html += '<li class="nav-item"><a class="nav-item nav-link" href="https://github.com/graboskyc/PhillyMUG201903" target="_blank">Source</a></li>';
         html += '<li class="nav-item dropdown">';
         html += '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>';
             html += '<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">';
