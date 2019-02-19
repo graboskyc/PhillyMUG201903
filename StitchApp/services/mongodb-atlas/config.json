@@ -1,0 +1,10 @@
+{
+    "id": "5c6c15705ca157fc490c1929",
+    "name": "mongodb-atlas",
+    "type": "mongodb-atlas",
+    "config": {
+        "clusterName": "MDBAzureTraining",
+        "wireProtocolEnabled": false
+    },
+    "version": 1
+}

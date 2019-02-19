@@ -1,0 +1,7 @@
+{
+    "id": "5c6c1ad58fe1494f4e6552af",
+    "name": "aws",
+    "actions": [
+        "s3:*"
+    ]
+}

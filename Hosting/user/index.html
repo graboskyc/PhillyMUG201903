@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Log In and Post</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/4132d47bbc.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.1.1/stitch.js"></script>
+        <script src="/includes/conf.js"></script>
+        <link rel="stylesheet" href="/includes/style.css" >
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav"><a class="navbar-brand" href="#"><img src="https://secure.meetupstatic.com/photos/event/d/e/7/4/600_458156948.jpeg" width="30" height="30" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup"><div class="navbar-nav" id="navlist"></div></div>
+            </nav>
+
+            <h1 id="heading">Sign In</h1>
+
+            <div id="loginform">
+                <label for="txt_un">Username:</label>
+                <input type="text" name="txt_un" id="txt_un" class="form-control" />
+                <label for="txt_pw">Password:</label>
+                <input type="password" name="txt_pw" id="txt_pw" class="form-control" />
+                <br />
+                <button onclick="login();return false;" class="btn btn-lg btn-success">Login</button>
+            </div>
+
+            <div id="response"></div>
+
+            <div style="display:none;" id="commentform">
+                
+            </div>
+
+            <footer></footer>
+
+        </div>
+
+        <script>
+            const client = stitch.Stitch.initializeDefaultAppClient(GLOBALSTITCHAPP);
+            const mongodb = client.getServiceClient(stitch.RemoteMongoClient.factory,"mongodb-atlas");
+            const db = mongodb.db(GLOBALDBNAME);
+
+            function login() {
+                const credential = new stitch.UserPasswordCredential($('#txt_un').val(), $('#txt_pw').val())
+                client.auth.loginWithCredential(credential)
+                // Returns a promise that resolves to the authenticated user
+                .then(authedUser => createForm(authedUser))
+                .catch(err => loginFail(err))
+            }
+
+            function loginFail(err) {
+                console.error(`login failed with error: ${err}`);
+                $('#response').html("Login Failed");
+                $('#response').removeAttr('class');
+                $('#response').addClass("alert alert-danger");
+            }
+
+            function createForm(authedUser) {
+                console.log(`successfully logged in with id: ${authedUser.id}`);
+
+                var url = window.self.location.href;
+                var kvp = url.split("#!");
+                if(kvp.length > 1) {
+                    window.self.location = decodeURI(kvp[1]);
+                } else {
+                    $('#response').removeAttr('class');
+                    $('#response').html("Logged in as " + authedUser.profile.data.email);
+                    $('#loginform').hide();
+                    $('#commentform').show();
+                    drawNav();
+                }
+            }
+
+            $(function() {
+                if(client.auth.hasOwnProperty('currentUser')){
+                    createForm(client.auth.currentUser);
+                }
+            });
+
+            $('#txt_pw').on('keypress',function(e) {
+                if(e.which == 13) {
+                    login();
+                }
+            });
+</script>
+    </body>
+</html>

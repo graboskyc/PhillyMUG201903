@@ -1,0 +1,12 @@
+{
+    "id": "5c6c19b51a45e49da119b211",
+    "name": "local-userpass",
+    "type": "local-userpass",
+    "config": {
+        "confirmEmailSubject": "Confirm your email",
+        "emailConfirmationUrl": "https://phillymug-msjzw.mongodbstitch.com/user/emailregistration.html",
+        "resetPasswordSubject": "",
+        "resetPasswordUrl": "https://phillymug-msjzw.mongodbstitch.com/user/signup.html"
+    },
+    "disabled": false
+}
