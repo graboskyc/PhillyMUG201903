@@ -25,7 +25,7 @@ function drawNav() {
         html += '<li class="nav-item dropdown">';
         html += '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>';
             html += '<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">';
-        if((client.auth.hasOwnProperty('currentUser')) && (client.auth.authInfo.userId !== undefined)) {
+        if((client.auth.hasOwnProperty('currentUser')) && (client.auth.authInfo.userProfile.data.email !== undefined)) {
                 html += '<a class="dropdown-item" href="#">'+client.auth.authInfo.userProfile.data.email+'</a>';
                 html += '<a class="dropdown-item" href="#">'+client.auth.authInfo.userId+'</a>';
                 html += '<a class="dropdown-item" href="javascript:logout();">Logout</a>';
