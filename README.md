@@ -47,5 +47,7 @@ It is a simple blog where anyone can register an account and post. It is all pow
 * Trigger runs in background to run Cognitive Vision API (cva) of what Azure thinks the image is
 * All viewable in `index.html` 
 
+![](Screenshots/flow.png)
+
 ## Screenshots
 ![](Screenshots/ss1.png)
